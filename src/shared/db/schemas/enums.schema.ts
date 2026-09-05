@@ -11,4 +11,6 @@ export const organizerStatusEnum = pgEnum("organizer_status",
     "REJECTED",
     "SUSPENDED",
   ]
-)
+);
+
+export type OrganizerStatus = (typeof organizerStatusEnum.enumValues)[number];
