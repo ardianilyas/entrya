@@ -1,5 +1,5 @@
 import "express";
-import type { roleEnum } from "../../db/schemas";
+import type { roleEnum } from "../db/schemas";
 
 type UserRole = typeof roleEnum.enumValues[number];
 

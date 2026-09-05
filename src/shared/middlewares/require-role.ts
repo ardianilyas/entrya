@@ -1,6 +1,6 @@
 import type { NextFunction, Request, Response } from "express";
 import * as schema from "../db/schemas";
-import { sendError } from "../shared/utils/response";
+import { sendError } from "../utils/response.ts";
 
 type UserRole = typeof schema.roleEnum.enumValues[number];
 
