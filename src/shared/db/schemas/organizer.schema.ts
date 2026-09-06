@@ -4,7 +4,7 @@ import { organizerStatusEnum } from "@/shared/db/schemas/enums.schema.ts";
 
 export const organizers = pgTable("organizers", {
   id: uuid("id").primaryKey().defaultRandom(),
-  userId: text("user_id").notNull().unique().references(() => user.id, { onDelete: "cascade" }),
+  userId: text("user_id").notNull().references(() => user.id, { onDelete: "cascade" }),
   name: text("name").notNull(),
   bio: text("description"),
   isVerified: boolean("is_verified").default(false),
