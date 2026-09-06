@@ -2,7 +2,7 @@ import { boolean, pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core";
 import { user } from "@/shared/db/schemas/users.schema.ts";
 import { organizerStatusEnum } from "@/shared/db/schemas/enums.schema.ts";
 
-export const organizer = pgTable("organizers", {
+export const organizers = pgTable("organizers", {
   id: uuid("id").primaryKey().defaultRandom(),
   userId: text("user_id").notNull().unique().references(() => user.id, { onDelete: "cascade" }),
   name: text("name").notNull(),

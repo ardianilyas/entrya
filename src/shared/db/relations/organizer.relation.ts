@@ -1,10 +1,11 @@
 import { relations } from "drizzle-orm";
-import { organizer } from "@/shared/db/schemas/organizer.schema.ts";
-import { user } from "@/shared/db/schemas";
+import { organizers } from "@/shared/db/schemas/organizer.schema.ts";
+import { events, user } from "@/shared/db/schemas";
 
-export const organizerRelation = relations(organizer, ({ one }) => ({
+export const organizerRelation = relations(organizers, ({ one, many }) => ({
   user: one(user, {
-    fields: [organizer.userId],
+    fields: [organizers.userId],
     references: [user.id]
-  })
+  }),
+  events: many(events)
 }));
