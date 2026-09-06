@@ -13,4 +13,13 @@ export const organizerStatusEnum = pgEnum("organizer_status",
   ]
 );
 
+export const eventStatusEnum = pgEnum("event_status", [
+  "DRAFT",
+  "PUBSLIHED",
+  "CANCELLED",
+  "COMPLETED",
+]);
+
+export type Role = (typeof roleEnum.enumValues)[number];
 export type OrganizerStatus = (typeof organizerStatusEnum.enumValues)[number];
+export type EventStatus = (typeof eventStatusEnum.enumValues)[number];
