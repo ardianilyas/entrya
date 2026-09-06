@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { db } from "@/shared/db";
-import { organizer, type OrganizerStatus } from "@/shared/db/schemas";
+import { organizers, type OrganizerStatus } from "@/shared/db/schemas";
 import { seedUsers } from "./user.seeder.ts";
 import type { Organizer } from "@/features/organizer/organizer.dto.ts";
 
@@ -53,7 +53,7 @@ export async function seedOrganizers(
 
   const overrideList = normalizeOverrides();
 
-  type OrganizerInsert = typeof organizer.$inferInsert;
+  type OrganizerInsert = typeof organizers.$inferInsert;
 
   // @ts-ignore
   const values: OrganizerInsert[] = overrideList.map((ov, i) => {
@@ -83,5 +83,5 @@ export async function seedOrganizers(
     };
   });
 
-  return db.insert(organizer).values(values).returning();
+  return db.insert(organizers).values(values).returning();
 }
