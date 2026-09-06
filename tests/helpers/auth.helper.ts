@@ -4,21 +4,24 @@ import { db } from "@/shared/db";
 import * as schema from "../../src/shared/db/schemas";
 import type { UserRole } from "@/shared/types/express";
 import { eq } from "drizzle-orm";
+import { faker } from "@faker-js/faker";
 
 export async function authenticate(role: UserRole = "user") {
   const agent = request.agent(app)
 
   const user = {
-    name: "Test User",
-    email: "test@example.com",
-    password: "password123"
+    name: faker.internet.username(),
+    email: faker.internet.email(),
+    password: faker.internet.password()
   }
 
-  await agent
+  const signUpRes = await agent
     .post("/api/auth/sign-up/email")
     .send(user)
 
-  await db.update(schema.user).set({ role }).where(eq(schema.user.email, user.email))
+  const userId: string = signUpRes.body?.user?.id ?? ""
+
+  await db.update(schema.user).set({ role }).where(eq(schema.user.id, userId))
 
   await agent
     .post("/api/auth/sign-in/email")
@@ -29,6 +32,7 @@ export async function authenticate(role: UserRole = "user") {
 
   return {
     user,
+    userId,
     agent
   }
 }
