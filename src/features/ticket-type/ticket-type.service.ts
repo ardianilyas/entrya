@@ -12,7 +12,9 @@ export class TicketTypeService {
   }
 
   async getTicketTypeById(id: string): Promise<TicketType | undefined> {
-    return this.ticketTypeRepository.getTicketTypeById(id);
+    const ticketType = await this.ticketTypeRepository.getTicketTypeById(id);
+    if (!ticketType) throw new NotFoundError("Ticket type not found");
+    return ticketType;
   }
 
   async createTicketType(data: CreateTicketTypeDto): Promise<TicketType | undefined> {
@@ -22,13 +24,13 @@ export class TicketTypeService {
   }
 
   async updateTicketType(id: string, data: UpdateTicketTypeDto): Promise<TicketType | undefined> {
-    const updatedTicketType = this.ticketTypeRepository.updateTicketType(id, data);
+    const updatedTicketType = await this.ticketTypeRepository.updateTicketType(id, data);
     if (!updatedTicketType) throw new NotFoundError("Ticket type not found");
     return updatedTicketType;
   }
 
   async deleteTicketType(id: string): Promise<boolean> {
-    const deleted = this.ticketTypeRepository.deleteTicketType(id);
+    const deleted = await this.ticketTypeRepository.deleteTicketType(id);
     if (!deleted) throw new NotFoundError("Ticket type not found");
     return deleted;
   }

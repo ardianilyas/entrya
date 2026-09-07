@@ -35,7 +35,7 @@ export class TicketTypeController {
 
   deleteTicketType = asyncHandler(async (req: Request, res: Response) => {
     const id = validate(getTicketTypeDto, req.params.id);
-    const deleted = await this.ticketTypeService.deleteTicketType(id);
-    return sendSuccess(res, "Ticket type deleted", deleted);
+     await this.ticketTypeService.deleteTicketType(id);
+    return sendSuccess(res, "Ticket type deleted", null);
   })
 }

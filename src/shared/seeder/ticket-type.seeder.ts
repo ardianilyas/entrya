@@ -3,9 +3,9 @@ import { faker } from "@faker-js/faker";
 import { db } from "@/shared/db";
 import { events, ticketTypes } from "@/shared/db/schemas";
 
-export async function seedTicketType(length: number = 1) {
+export async function seedTicketType(length: number = 1, eventId?: string) {
   const eventIds = await db.select({ id: events.id }).from(events).limit(5);
-  const data: TicketTypeInsert[] = Array.from({ length: length }).map((_, i) => ({
+  const data: TicketTypeInsert[] = Array.from({ length: length }).map((_, _i) => ({
     name: faker.music.songName(),
     description: faker.lorem.sentence(),
     price: faker.number.int({ min: 1000000, max: 5000000 }),
@@ -13,7 +13,7 @@ export async function seedTicketType(length: number = 1) {
     saleStartAt: faker.date.past(),
     saleEndAt: faker.date.future(),
     isActive: true,
-    eventId: faker.helpers.arrayElement(eventIds).id,
+    eventId: eventId ?? faker.helpers.arrayElement(eventIds).id,
   }));
 
   return db.insert(ticketTypes).values(data).returning();
