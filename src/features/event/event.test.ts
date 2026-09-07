@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 import { seedOrganizers } from "@/shared/seeder/organizer.seeder.ts";
 import { seedEvent } from "@/shared/seeder/event.seeder.ts";
 import type { CreateEventDto } from "@/features/event/event.dto.ts";
@@ -12,7 +12,7 @@ describe("Event endpoint", () => {
   let eventId: string;
   let payload: CreateEventDto;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     await seedOrganizers(1);
     const events = await seedEvent();
 
