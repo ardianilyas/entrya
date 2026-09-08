@@ -8,6 +8,13 @@
       "when": 1788771866978,
       "tag": "0000_demonic_iron_lad",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1788857667438,
+      "tag": "0001_stiff_puma",
+      "breakpoints": true
     }
   ]
 }

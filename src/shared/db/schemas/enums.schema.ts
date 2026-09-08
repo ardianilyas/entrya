@@ -20,6 +20,13 @@ export const eventStatusEnum = pgEnum("event_status", [
   "COMPLETED",
 ]);
 
+export const orderStatusEnum = pgEnum("order_status", [
+  "PENDING",
+  "PAID",
+  "CANCELLED",
+  "EXPIRED"
+]);
+
 export const ticketStatusEnum = pgEnum("ticket_status", [
   "AVAILABLE",
   "RESERVED",
@@ -31,4 +38,5 @@ export const ticketStatusEnum = pgEnum("ticket_status", [
 export type Role = (typeof roleEnum.enumValues)[number];
 export type OrganizerStatus = (typeof organizerStatusEnum.enumValues)[number];
 export type EventStatus = (typeof eventStatusEnum.enumValues)[number];
+export type OrderStatus = (typeof orderStatusEnum.enumValues)[number];
 export type TicketStatus = (typeof ticketStatusEnum.enumValues)[number];

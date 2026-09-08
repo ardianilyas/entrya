@@ -1,9 +1,10 @@
 import { relations } from "drizzle-orm";
-import { account, session, user } from "@/shared/db/schemas";
+import { account, orders, session, user } from "@/shared/db/schemas";
 import { organizers } from "@/shared/db/schemas";
 
 export const userRelations = relations(user, ({ one, many }) => ({
   organizer: one(organizers),
+  orders: many(orders),
   sessions: many(session),
   accounts: many(account),
 }));
