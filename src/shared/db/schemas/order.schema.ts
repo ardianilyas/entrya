@@ -19,7 +19,7 @@ export const orders = pgTable("orders", {
     precision: 12,
     scale: 2,
     mode: "number",
-  }),
+  }).notNull(),
 
   status: orderStatusEnum("status").notNull().default("PENDING"),
 
