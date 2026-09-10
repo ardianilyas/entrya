@@ -18,6 +18,14 @@ const envSchema = z.object({
   BETTER_AUTH_URL: z.string({
     error: "BETTER_AUTH_URL is required",
   }),
+
+  BORDERPAY_API_URL: z.string({
+    error: "BORDERPAY_API_URL is required",
+  }),
+
+  BORDERPAY_API_KEY: z.string({
+    error: "BORDERPAY_API_KEY is required",
+  }),
 });
 
 const parsedEnv = envSchema.safeParse(process.env);
