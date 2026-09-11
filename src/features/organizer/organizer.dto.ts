@@ -1,7 +1,7 @@
 import { z } from "zod";
-import { organizer } from "@/shared/db/schemas";
+import { organizers } from "@/shared/db/schemas";
 
-export type Organizer = typeof organizer.$inferSelect;
+export type Organizer = typeof organizers.$inferSelect;
 
 export const createOrganizerDto = z.object({
   name: z.string().min(1, { error: "Name is required" }),

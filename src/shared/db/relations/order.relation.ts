@@ -1,5 +1,5 @@
 import { relations } from "drizzle-orm";
-import { events, orders, ticketTypes, user } from "@/shared/db/schemas";
+import { events, orders, payments, ticketTypes, user } from "@/shared/db/schemas";
 
 export const orderRelation = relations(orders, ({ one, many }) => ({
   user: one(user, {
@@ -13,5 +13,6 @@ export const orderRelation = relations(orders, ({ one, many }) => ({
   ticketType: one(ticketTypes, {
     fields: [orders.ticketTypeId],
     references: [ticketTypes.id]
-  })
+  }),
+  payment: one(payments)
 }));

@@ -26,6 +26,10 @@ const envSchema = z.object({
   BORDERPAY_API_KEY: z.string({
     error: "BORDERPAY_API_KEY is required",
   }),
+
+  BORDERPAY_WEBHOOK_TOKEN: z.string({
+    error: "BORDERPAY_WEBHOOK_TOKEN is required",
+  }),
 });
 
 const parsedEnv = envSchema.safeParse(process.env);
