@@ -14,7 +14,7 @@ interface BorderpayPaymentResponse {
   amount: number;
   qr_string: string;
   pay_url: string;
-  expires_at: string;
+  expires_at: Date;
 }
 
 class BorderpayClient {
